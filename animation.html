@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画TEST</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .anima {
+            display: flex;
+        }
+
+        .box {
+            width: 300px;
+            height: 500px;
+            border-radius: 10px;
+            background-color: #1b1b1b;
+            padding: 20px 10px;
+            box-sizing: border-box;
+            padding-top: 60px;
+            margin-right: 100px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 220px;
+            height: 60px;
+            background-color: #3e3e3e;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 1s ease;
+        }
+
+        .item:hover {
+            background-color: #234bc7;
+            height: 90px;
+            width: 320px;
+            /* transform: translateY(-30px);
+            margin-bottom: 0; */
+        }
+
+        .item:hover .test {
+            color: plum;
+        }
+
+        .icon {
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: #585858;
+        }
+
+        p {
+            color: #ffffff;
+        }
+
+        .arrow {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            transform: rotate(90deg);
+        }
+
+        .item:hover .arrow {
+            animation: .6s animate 1s forwards;
+        }
+
+        /* @keyframes itemChange {
+            0% {
+                width: 220px;
+                height: 60px;
+                transform: translateY(0);
+                background-color: #3e3e3e;
+            }
+            100% {
+                height: 90px;
+                width: 320px;
+                transform: translateY(-30px);
+                background-color: #234bc7;
+            }
+        } */
+        @keyframes animate {
+            0% {
+                transform: rotate(8deg);
+            }
+
+            25% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(4deg);
+            }
+
+            75% {
+                transform: rotate(-4deg);
+            }
+
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        .cItem {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 200px;
+            height: 100px;
+            background-color: #313131;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .blueLeft {
+            width: 50px;
+            height: 50px;
+            background-color: #234bc7;
+            border-radius: 5px;
+        }
+
+        .cItem p {
+            font-size: 14px;
+        }
+
+        .cItem .icon {
+            width: 85px;
+            height: 30px;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .cMask {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background-color: #ffffff;
+        }
+
+        .cMask1 {
+            animation: .4s maskItem forwards;
+        }
+
+        .cMask2 {
+            animation: .4s maskItem .4s forwards;
+        }
+
+        .cMask3 {
+            animation: .4s maskItem .8s forwards;
+        }
+
+        @keyframes maskItem {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(200px);
+                background-color: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="anima">
+        <div class="box">
+            <div class="item">
+                <div class="icon"></div>
+                <p>Ad Set 1</p>
+                <div class="arrow">&gt;</div>
+            </div>
+            <div class="item">
+                <div class="icon"></div>
+                <p>Ad Set 2</p>
+                <div class="arrow">&gt;</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cItem">
+                <div class="blueLeft"></div>
+                <div class="rightContent">
+                    <p>Ad creatice A</p>
+                    <div class="icon"></div>
+                </div>
+                <div class="cMask cMask1"></div>
+            </div>
+            <div class="cItem">
+                <div class="blueLeft"></div>
+                <div class="rightContent">
+                    <p>Ad creatice A</p>
+                    <div class="icon"></div>
+                </div>
+                <div class="cMask cMask2"></div>
+            </div>
+            <div class="cItem">
+                <div class="blueLeft"></div>
+                <div class="rightContent">
+                    <p>Ad creatice A</p>
+                    <div class="icon"></div>
+                </div>
+                <div class="cMask cMask3"></div>
+            </div>
+        </div>
+    </div>
+    <p class="test" style="color:pink;">testtestestest</p>
+</body>
+
+</html>

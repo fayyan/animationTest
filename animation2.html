@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画test2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg {
+            position: relative;
+            background-color: #44434a;
+            width: 100%;
+            height: 500px;
+        }
+
+        .blackBx {
+            width: 350px;
+            height: 500px;
+            background-color: #1b1b1b;
+            border-radius: 20px;
+            margin-left: 250px;
+            overflow: hidden;
+        }
+
+        .blackBx .item {
+            display: flex;
+            align-items: center;
+            width: 280px;
+            height: 60px;
+            background-color: #3b3b3b;
+            margin: 20px auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .blackBx .item:nth-child(2) {
+            animation: .4s boundBig 2.6s ease forwards;
+        }
+
+        .blackBx .item .icon {
+            width: 40px;
+            height: 40px;
+            background-color: #575757;
+            margin: 0 15px 0 30px;
+            border-radius: 4px;
+        }
+
+        .blackBx .item .icon2 {
+            animation: .4s bgsmall 2.6s ease forwards;
+        }
+
+        .blackBx .item p {
+            color: #7d7d7d;
+        }
+
+        @keyframes boundBig {
+            0% {
+                background-color: #234bc7;
+                transform: scale(1.1);
+            }
+
+            100% {
+                background-color: #234bc7;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bgsmall {
+            0% {
+                background-color: #3b63db;
+            }
+
+            100% {
+                background-color: #3b63db;
+            }
+        }
+
+        .moveItem1,
+        .moveItem2 {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            top: 80px;
+            left: 10px;
+            width: 180px;
+            height: 90px;
+            border-radius: 8px;
+            background-color: #000000;
+            transition: all .5s;
+        }
+
+        .moveItem1 {
+            animation: 1.8s moveItem forwards;
+        }
+
+        .moveItem2 {
+            animation: 1.8s moveItem1 forwards;
+            top: 260px;
+            left: 80px;
+        }
+
+        @keyframes moveItem {
+            0% { transform: translate(0); }
+            100% { transform: translate(20px, 10px); }
+        }
+
+        @keyframes moveItem1 {
+            0% { transform: translate(0); }
+            100% { transform: translate(-30px, 10px); }
+        }
+
+        .moveItem1::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #234bc7;
+            animation: 2s animateColor1 forwards;
+        }
+
+        .moveItem1 .icon,
+        .moveItem2 .icon {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: #575757;
+            margin: 0 15px 0 30px;
+            border-radius: 8px;
+        }
+
+        .moveItem1 .icon::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #3b63db;
+            animation: .9s animateColor1 .3s forwards;
+        }
+
+        .moveItem1 .number,
+        .moveItem2 .number2 {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 20px;
+            z-index: 10;
+        }
+
+        @keyframes animateColor1 {
+            0% {
+                border-radius: 0 0 8px 8px;
+                height: 0;
+            }
+
+            80% {
+                border-radius: 0 0 8px 8px;
+            }
+
+            100% {
+                border-radius: 8px;
+                height: 100%;
+            }
+        }
+        .number {
+            animation: .8s opacityChange 1.8s;
+        }
+        @keyframes opacityChange {
+            0% { opacity: 1; }
+            20% { opacity: 0; }
+            40% { opacity: 1; }
+            60% { opacity: 0; }
+            80% { opacity: 1; }
+            90% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .moveItem3 {
+            position: absolute;
+            left: 580px;
+            top: 50px;
+            width: 50px;
+            height: 50px;
+            background-color: #f1a90b;
+            animation: 1.8s moveItem3 forwards;
+            border-radius: 4px;
+        }
+
+        @keyframes moveItem3{
+            0% { transform: translateY(0); }
+            100% { transform: translateY(30px); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="blackBx">
+            <div class="item">
+                <div class="icon"></div>
+                <p>Lower Bid</p>
+            </div>
+            <div class="item">
+                <div class="icon icon2"></div>
+                <p>Increase Budget</p>
+            </div>
+            <div class="item">
+                <div class="icon"></div>
+                <p>Pause Campaign</p>
+            </div>
+            <div class="item">
+                <div class="icon"></div>
+                <p>Reactivate Campaign</p>
+            </div>
+        </div>
+        <div class="moveItem1">
+            <div class="icon"></div>
+            <p class="number">&gt;<span class="num">0.0</span></p>
+        </div>
+        <div class="moveItem2">
+            <div class="icon"></div>
+            <p class="number2">&gt;0.9</p>
+        </div>
+        <div class="moveItem3"></div>
+    </div>
+
+    <script>
+        var number = document.querySelector('.num');
+        var time = 0.0;
+        var timer = setInterval(() => {
+            time = (time * 10 + 1) / 10;
+            number.innerHTML = time.toFixed(1);
+            if (time >= 2) {
+                clearInterval(timer);
+            }
+        }, 90)
+    </script>
+</body>
+
+</html>
