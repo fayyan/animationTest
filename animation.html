@@ -25,16 +25,24 @@
             background-color: #eca70e;
             border-radius: 15px;
             z-index: 10;
-            animation: 2s yellowAnimate ease forwards;
+        }
+
+        .yellowAnimation {
+            animation: yellowAnimate 5s ease forwards;
         }
 
         @keyframes yellowAnimate {
-            0% { transform: scale(0.9); }
+            0% {
+                transform: scale(0.9);
+            }
             30% {
                 transform: scale(1);
             }
-            60% {
-                transform: translate(-100px, 150px);
+            50% {
+                transform: translate(-150px, 150px);
+            }
+            80% {
+                transform: translate(-300px, 10px) scale(.6);
             }
             100% {
                 transform: translate(-300px, 10px) scale(.6);
@@ -53,16 +61,27 @@
             box-sizing: border-box;
             padding-top: 60px;
             margin-right: 100px;
-            animation: 1.2s boxToBig ease forwards,
-                    2s boxToLeft 1.2s ease forwards;
             overflow: hidden;
+            opacity: 0;
+        }
+
+        .boxAnimation {
+            animation: 1s boxToBig ease forwards,
+                1.4s boxToLeft 1s ease forwards;
         }
 
         @keyframes boxToBig {
             0% {
                 height: 0;
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                height: 30px;
             }
             100% {
+                opacity: 1;
+                width: 300px;
                 height: 500px;
                 overflow: visible;
             }
@@ -72,6 +91,7 @@
             0% {
                 transform: 0;
             }
+
             100% {
                 transform: translate(-220px, 80px);
             }
@@ -92,8 +112,8 @@
             transition: all 1s ease;
         }
 
-        .item:first-child {
-            animation: 1.4s itemToBig 1.2s ease forwards;
+        .itemAnimation {
+            animation: 1.4s itemToBig 1s ease forwards;
         }
 
         @keyframes itemToBig {
@@ -124,24 +144,10 @@
             transform: rotate(90deg);
         }
 
-        .item:first-child .arrow {
-            animation: .8s animate 2.6s forwards;
+        .arrowAnimation {
+            animation: .6s animate 2.4s forwards;
         }
 
-        /* @keyframes itemChange {
-            0% {
-                width: 220px;
-                height: 60px;
-                transform: translateY(0);
-                background-color: #3e3e3e;
-            }
-            100% {
-                height: 90px;
-                width: 320px;
-                transform: translateY(-30px);
-                background-color: #234bc7;
-            }
-        } */
         @keyframes animate {
             0% {
                 transform: rotate(8deg);
@@ -178,12 +184,17 @@
             margin-bottom: 20px;
             opacity: 0;
             z-index: -2;
-            animation: .2s changeOpacity 3.4s forwards;
+            animation: .2s changeOpacity 3s forwards;
         }
 
         @keyframes changeOpacity {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         .blueLeft {
@@ -213,16 +224,16 @@
             background-color: #ffffff;
         }
 
-        .cMask1 {
-            animation: .4s maskItem 3.4s forwards;
+        .cMask1Animation {
+            animation: .4s maskItem 3.2s ease-out forwards;
         }
 
-        .cMask2 {
-            animation: .4s maskItem 3.8s forwards;
+        .cMask2Animation {
+            animation: .4s maskItem 3.6s ease-out forwards;
         }
 
-        .cMask3 {
-            animation: .4s maskItem 4.2s forwards;
+        .cMask3Animation {
+            animation: .4s maskItem 4s ease-out forwards;
         }
 
         @keyframes maskItem {
@@ -280,6 +291,44 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var box = document.querySelector('.box');
+        var yellow = document.querySelector('.yellow');
+        var item = document.querySelectorAll('.item');
+        var arrow = item[0].querySelector('.arrow');
+        var cMask1 = document.querySelector('.cMask1');
+        var cMask2 = document.querySelector('.cMask2');
+        var cMask3 = document.querySelector('.cMask3');
+        var flag;
+        addAnima();
+        var timer = setInterval(() => {
+            removeAnima();
+            setTimeout(() => {
+                addAnima();
+            }, 200)
+        }, 5000)
+        function addAnima() {
+            flag = 1;
+            box.classList.add('boxAnimation');
+            yellow.classList.add('yellowAnimation');
+            item[0].classList.add('itemAnimation');
+            arrow.classList.add('arrowAnimation');
+            cMask1.classList.add('cMask1Animation');
+            cMask2.classList.add('cMask2Animation');
+            cMask3.classList.add('cMask3Animation');
+        }
+        function removeAnima() {
+            flag = 0;
+            box.classList.remove('boxAnimation');
+            yellow.classList.remove('yellowAnimation');
+            item[0].classList.remove('itemAnimation');
+            arrow.classList.remove('arrowAnimation');
+            cMask1.classList.remove('cMask1Animation');
+            cMask2.classList.remove('cMask2Animation');
+            cMask3.classList.remove('cMask3Animation');
+        }
+    </script>
 </body>
 
 </html>
