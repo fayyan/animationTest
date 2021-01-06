@@ -76,8 +76,14 @@
                 opacity: 0;
             }
             20% {
-                opacity: 1;
+                opacity: 0.4;
                 height: 30px;
+            }
+            40% {
+                opacity: 0.8;
+            }
+            60% {
+                opacity: 1;
             }
             100% {
                 opacity: 1;
@@ -300,7 +306,6 @@
         var cMask1 = document.querySelector('.cMask1');
         var cMask2 = document.querySelector('.cMask2');
         var cMask3 = document.querySelector('.cMask3');
-        var flag;
         addAnima();
         var timer = setInterval(() => {
             removeAnima();
@@ -309,7 +314,6 @@
             }, 200)
         }, 5000)
         function addAnima() {
-            flag = 1;
             box.classList.add('boxAnimation');
             yellow.classList.add('yellowAnimation');
             item[0].classList.add('itemAnimation');
@@ -319,7 +323,6 @@
             cMask3.classList.add('cMask3Animation');
         }
         function removeAnima() {
-            flag = 0;
             box.classList.remove('boxAnimation');
             yellow.classList.remove('yellowAnimation');
             item[0].classList.remove('itemAnimation');

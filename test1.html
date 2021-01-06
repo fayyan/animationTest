@@ -3,53 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .div1 {
-            width: 400px;
-            height: 400px;
-            background: #ccc;
-            position: relative;
-        }
-
-        .div2 {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 200px;
-            height: 400px;
-            background: #0099CC;
-        }
-
-        .mask {
-            position: absolute;
-            width: 200px;
-            left: 0;
-            animation: animate 2s ease infinite;
-            overflow: hidden;
-        }
-
-        @keyframes animate {
-            from {
-                height: 0px;
-                top: 400px;
-            }
-
-            to {
-                height: 400px;
-                top: 0px;
-            }
-        }
+    <style type="text/css">
     </style>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 </head>
 
 <body>
-    <div class="div1">
-        <div class="mask">
-            <div class="div2"></div>
-        </div>
-    </div>
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        canvas.width = '500';
+        canvas.height = '400';
+        context.beginPath();
+        context.fillStyle = '#000000';
+        // context.moveTo(75, 40);
+        // context.bezierCurveTo(75, 37, 70, 25, 50, 25);
+        // context.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+        // context.bezierCurveTo(20, 80, 40, 102, 75, 120);
+        // context.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+        // context.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+        // context.bezierCurveTo(85, 25, 75, 37, 75, 40);
+        context.moveTo(60,60);
+        context.bezierCurveTo(60, 60, 40, 65, 30, 90)
+        context.stroke();
+        //以下两行是画边框
+        context.fillStyle = "#cccccc";
+        context.strokeRect(0, 0, canvas.width, canvas.height);
+    </script>
 </body>
 
 </html>

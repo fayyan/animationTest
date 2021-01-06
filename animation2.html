@@ -38,7 +38,7 @@
             cursor: pointer;
         }
 
-        .blackBx .item:nth-child(2) {
+        .bxItemAnimation {
             animation: .6s boundBig 2.6s ease forwards;
         }
 
@@ -50,7 +50,7 @@
             border-radius: 4px;
         }
 
-        .blackBx .item:nth-child(2) .icon {
+        .bxIconAnimation {
             animation: .6s bgsmall 2.6s ease forwards;
         }
 
@@ -94,14 +94,17 @@
             transition: all .5s;
         }
 
-        .moveItem1 {
+        .moveItem1Animation {
             animation: 1.8s moveItem forwards;
         }
 
         .moveItem2 {
-            animation: 1.8s moveItem1 forwards;
             top: 260px;
             left: 80px;
+        }
+
+        .moveItem2Animation {
+            animation: 1.8s moveItem1 forwards;
         }
 
         @keyframes moveItem {
@@ -114,12 +117,11 @@
             100% { transform: translate(-30px, 10px); }
         }
 
-        .moveItem1::before {
-            content: '';
+        .before1 {
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 100%;
+            width: 180px;
             background-color: #234bc7;
             animation: 1.8s animateColor1 linear forwards;
         }
@@ -134,14 +136,13 @@
             border-radius: 8px;
         }
 
-        .moveItem1 .icon::before {
-            content: '';
+        .moveItem1 .before2 {
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 100%;
+            width: 50px;
             background-color: #3b63db;
-            animation: 1s animateColor1 .4s linear forwards;
+            animation: 1s animateColor2 .4s linear forwards;
         }
 
         .moveItem1 .number,
@@ -164,10 +165,25 @@
 
             100% {
                 border-radius: 8px;
-                height: 100%;
+                height: 90px;
             }
         }
-        .number {
+        @keyframes animateColor2 {
+            0% {
+                border-radius: 0 0 8px 8px;
+                height: 0;
+            }
+
+            80% {
+                border-radius: 0 0 8px 8px;
+            }
+
+            100% {
+                border-radius: 8px;
+                height: 50px;
+            }
+        }
+        .numberAnimation {
             animation: .8s opacityChange 1.8s;
         }
         @keyframes opacityChange {
@@ -187,8 +203,11 @@
             width: 50px;
             height: 50px;
             background-color: #f1a90b;
-            animation: 1.8s moveItem3 forwards;
             border-radius: 4px;
+        }
+
+        .moveItem3Animation {
+            animation: 1.8s moveItem3 forwards;
         }
 
         @keyframes moveItem3{
@@ -219,7 +238,10 @@
             </div>
         </div>
         <div class="moveItem1">
-            <div class="icon"></div>
+            <div class="itemBefore before1"></div>
+            <div class="icon">
+                <div class="iconBefore before2"></div>
+            </div>
             <p class="number">&gt;<span class="num">0.0</span></p>
         </div>
         <div class="moveItem2">
@@ -231,14 +253,53 @@
 
     <script>
         var number = document.querySelector('.num');
-        var time = 0.0;
+        var bxItem = document.querySelectorAll('.blackBx .item')[1];
+        var bxIcon = bxItem.querySelector('.icon');
+        var moveItem1 = document.querySelector('.moveItem1');
+        var moveItem2 = document.querySelector('.moveItem2');
+        var moveItem3 = document.querySelector('.moveItem3');
+        var itemBefore = document.querySelector('.itemBefore');
+        var iconBefore = document.querySelector('.iconBefore');
+        count();
+        function count() {
+            var time = 0.0;
+            var timer = setInterval(() => {
+                time = (time * 10 + 1) / 10;
+                number.innerHTML = time.toFixed(1);
+                if (time >= 2) {
+                    clearInterval(timer);
+                }
+            }, 90)
+        }
+        addAnimation();
+        function addAnimation() {
+            bxItem.classList.add('bxItemAnimation');
+            bxIcon.classList.add('bxIconAnimation');
+            moveItem1.classList.add('moveItem1Animation');
+            moveItem2.classList.add('moveItem2Animation');
+            moveItem3.classList.add('moveItem3Animation');
+            number.classList.add('numberAnimation');
+            itemBefore.classList.add('before1');
+            iconBefore.classList.add('before2');
+        }
+        function removeAnimation() {
+            bxItem.classList.remove('bxItemAnimation');
+            bxIcon.classList.remove('bxIconAnimation');
+            moveItem1.classList.remove('moveItem1Animation');
+            moveItem2.classList.remove('moveItem2Animation');
+            moveItem3.classList.remove('moveItem3Animation');
+            number.classList.remove('numberAnimation');
+            itemBefore.classList.remove('before1');
+            iconBefore.classList.remove('before2');
+        }
+        addAnimation();
         var timer = setInterval(() => {
-            time = (time * 10 + 1) / 10;
-            number.innerHTML = time.toFixed(1);
-            if (time >= 2) {
-                clearInterval(timer);
-            }
-        }, 90)
+            removeAnimation();
+            setTimeout(() => {
+                addAnimation();
+                count();
+            }, 500)
+        }, 5000)
     </script>
 </body>
 
