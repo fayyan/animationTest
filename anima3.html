@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box {
+            display: flex;
+        }
+        .inner {
+            width: 50%;
+        }
+        .imgBox {
+            margin-left: 20px;
+            width: 600px;
+            height: 500px;
+            background-color: #272727;
+            overflow: hidden;
+        }
+        .imgBox .innerBox {
+            display: flex;
+            flex-direction: row;
+            margin: 10px auto;
+            width: 560px;
+            height: 480px;
+            border-radius: 25px;
+            border: 6px solid #323131;
+            overflow: hidden;
+        }
+        .innerBox .first {
+            display: flex;
+            flex-direction: column;
+            width: 160px;
+            margin: 10px;
+            animation: toTop 2s linear infinite;
+        }
+        .innerBox .second {
+            position: relative;
+            top: -250px;
+            animation: toBottom 2s linear infinite;
+        }
+        .innerBox .first .normal {
+            position: relative;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .innerBox .first .normal .thumb {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 60px;
+            height: 60px;
+            margin: 15px 0 0 15px;
+            background-color: paleturquoise;
+            z-index: 9;
+            box-shadow: 2px 2px plum;
+        }
+        .innerBox .first .normal .icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 90px;
+            height: 80px;
+            background-color: bisque;
+        }
+        .innerBox .first .normal .text {
+            margin-top: 100px;
+            font-size: 10px;
+            color: #5d5e5e;
+        }
+        .innerBox .first .normal .number {
+            padding: 10px 0;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .innerBox .first .normal .star span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-right: 2px;
+        }
+        @keyframes toTop {
+            0% { transform: translateY(0); }
+            100% {
+                transform: translateY(-100px);
+            }
+        }
+        @keyframes toBottom {
+            0% { transform: translateY(0); }
+            100% {
+                transform: translateY(100px);
+            }
+        }
+        .black {
+            background-color: #1b1b1b;
+        }
+        .active {
+            background-color: #f3ab0b;
+        }
+        .grey {
+            background-color: #3f3e3e;
+        }
+        .round {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="inner">
+            <h2>原图</h2>
+            <img src="./3.gif" alt="" style="width: 100%;">
+        </div>
+        <div class="mine">
+            <h2>示例图</h2>
+            <div class="imgBox">
+                <div class="innerBox black">
+                    <div class="left"></div>
+                    <div class="first">
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">22,702,900</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">21,992,218</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">22,702,900</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="first second">
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">25,300,537</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">11,222</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">21,992,218</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                            </div>
+                        </div>
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">22,702,900</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="first">
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">22,702,900</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">21,992,218</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                        <div class="normal grey round">
+                            <div class="thumb round"></div>
+                            <div class="icon"></div>
+                            <div class="text">Impression</div>
+                            <div class="number">22,702,900</div>
+                            <div class="star">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="black"></span>
+                                <span class="black"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

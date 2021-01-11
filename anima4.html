@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box {
+            display: flex;
+        }
+        .other,
+        .mine {
+            width: 50%;
+        }
+        .imgBox {
+            width: 600px;
+            height: 560px;
+            margin-left: 20px;
+            background-color: #232328;
+            overflow: hidden;
+        }
+        .imgBox .content {
+            width: 560px;
+            height: 460px;
+            margin: 20px auto 0 auto;
+            border: 8px solid #323131;
+            border-radius: 20px;
+        }
+        .imgBox .content .blackBg {
+            width: 340px;
+            height: 340px;
+            margin: 50px auto;
+            padding: 20px;
+            animation: toBig 1s linear forwards;
+        }
+        .imgBox .content .blackBg .iconList {
+            position: relative;
+            display: flex;
+            width: 100%;
+        }
+        .imgBox .content .blackBg .iconList:nth-of-type(1) {
+            animation: icon1Anima 4s ease forwards;
+        }
+        .imgBox .content .blackBg .iconList:nth-of-type(2) {
+            animation: icon2Anima 4s ease forwards,
+            iconList1Anima 2s 2s linear forwards;
+        }
+        .imgBox .content .blackBg .iconList:nth-of-type(3) {
+            animation: icon3Anima 4s ease forwards,
+            iconList2Anima 1s 2s linear forwards;
+        }
+        .imgBox .content .blackBg .icon {
+            /* display: flex; */
+            width: 65px;
+            height: 65px;
+            background-color: #3f3e3e;
+            margin: 17.5px;
+            border-radius: 8px;
+            z-index: 8;
+            overflow: hidden;
+            animation: iconAnima 1s linear forwards,
+            iconLaterAnima 2s 2s linear forwards;
+        }
+        .imgBox .content .blackBg .icon .info {
+            float: right;
+            color: #7b7b7b;
+            font-size: 8px;
+        }
+        .black {
+            background-color: #1b1b1b;
+        }
+        .grey {
+            background-color: #3f3e3e;
+        }
+        .round {
+            border-radius: 10px;
+        }
+        @keyframes toBig {
+            100% {
+                width: 500px;
+                height: 360px;
+                margin: 40px auto;
+            }
+        }
+        @keyframes iconAnima {
+            0% {
+                width: 65px;
+                height: 65px;
+            }
+            100% {
+                margin: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        @keyframes icon1Anima {
+            0% {
+                transform: translate(0);
+            }
+            40%,
+            100% {
+                transform: translate(60px, -10px);
+            }
+        }
+        @keyframes icon2Anima {
+            0% {
+                transform: translate(0);
+            }
+            40%,
+            100% {
+                transform: translate(240px, -70px);
+            }
+        }
+        @keyframes icon3Anima {
+            0% {
+                transform: translate(0);
+            }
+            40%,
+            100% {
+                transform: translate(420px, -130px);
+            }
+        }
+        @keyframes iconLaterAnima {
+            100% {
+                width: 100px;
+            }
+        }
+        @keyframes iconList1Anima {
+            100% {
+                transform: translate(420px, -70px);
+            }
+        }
+        @keyframes iconList2Anima {
+            100% {
+                transform: translate(600px, -130px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="other">
+            <h2>原图</h2>
+            <img src="./2.gif" alt="" style="width: 100%;">
+        </div>
+        <div class="mine">
+            <h2>示例图</h2>
+            <div class="imgBox">
+                <div class="content grey">
+                    <div class="blackBg black round">
+                        <div class="iconList">
+                            <div class="icon">
+                                <div style="width: 40px; height: 65px; background: plum; float: left;"></div>
+                                <div class="info">
+                                    <div class="name">Tik tok</div>
+                                    <div class="cost">0.00 CNY</div>
+                                </div>
+                            </div>
+                            <div class="icon">
+                                <div class="info">
+                                    <div class="name">Tik tok</div>
+                                    <div class="cost">0.00 CNY</div>
+                                </div>
+                            </div>
+                            <div class="icon">
+                                <div class="info">
+                                    <div class="name">Tik tok</div>
+                                    <div class="cost">0.00 CNY</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iconList">
+                            <div class="icon"></div>
+                            <div class="icon"></div>
+                            <div class="icon"></div>
+                        </div>
+                        <div class="iconList">
+                            <div class="icon"></div>
+                            <div class="icon"></div>
+                            <div class="icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <canvas id="canvas" height="200px">
+        current stock price oklih
+    </canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        context.fillStyle = 'plum';
+        context.fillRect(0,0, 150, 100);
+    </script>
+</body>
+</html>
